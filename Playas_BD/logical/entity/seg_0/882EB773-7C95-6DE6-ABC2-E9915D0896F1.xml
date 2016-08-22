@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="882EB773-7C95-6DE6-ABC2-E9915D0896F1" name="reservas">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:44:21 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_reserva" id="4700D51A-6480-D378-47E7-F7CC4A82D23A">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:44:38 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_playa" id="502EC417-22A4-05C9-E87C-F76F0F65C9BC">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:45:30 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="A5627847-90B4-1506-428E-54C797E3CC8D">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:45:45 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_usuario" id="65366D66-E2E5-4944-57CF-6B028FEA49BA">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:27:09 UTC</createdTime>
+<generatorID>CBBE5556-51EB-1824-2045-386D28CB91C2</generatorID>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<referedAttribute>4653581A-2043-132D-35D4-EDA845D5CDCB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="041B3FC0-896F-8990-7C69-371BF89ED02E" name="reservas PK">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:44:48 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4700D51A-6480-D378-47E7-F7CC4A82D23A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5EEB461D-88B8-044E-E354-2A49A03E9029" name="vehiculos">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:19:17 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_vehiculo" id="578F60CE-32BE-1C48-6EF9-E70FF7453D52">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:19:26 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="patente" id="933CB0A0-4DB0-D707-A46D-722FAE3A06D2">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:20:10 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_usuario" id="9D78DEAB-C6B4-7F06-F7CE-3F6F892334E1">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:37:58 UTC</createdTime>
+<generatorID>E9FEC55B-ED3A-4C46-E337-9387B7D566B4</generatorID>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<referedAttribute>4653581A-2043-132D-35D4-EDA845D5CDCB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="98C965DE-847A-5C90-789D-EF05A5B74D30" name="vehiculos PK">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 22:19:37 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>578F60CE-32BE-1C48-6EF9-E70FF7453D52</attributeRef>
+<attributeRef>9D78DEAB-C6B4-7F06-F7CE-3F6F892334E1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

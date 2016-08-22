@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8A98E526-0784-C4DD-098E-AB60CECCDDF7" name="usuarios">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:32:28 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_usuario" id="4653581A-2043-132D-35D4-EDA845D5CDCB">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:36:23 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rol" id="9A000628-58BB-D282-C5D0-6EFAA5634A35">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:34:57 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="03DACD8A-3B70-5081-BCBE-254A9C253103">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:36:46 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 CHAR</dataTypeSize>
+<ownDataTypeParameters>25 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido" id="CAF44B01-09D5-76A7-BDCD-E2018EF213E7">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:37:09 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correo" id="70D157DD-9065-2874-4568-79C2A7AB98B9">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:39:04 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="usuario" id="7A2EC6C1-BFF2-C1B4-7DA4-D77C231CF3B5">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:40:03 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contraseña" id="823428EF-F776-4F11-35D7-92A10CE89429">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:40:18 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FFA6D721-1FC0-40A8-2686-B4E1017DA464" name="usuarios PK">
+<createdBy>Javi</createdBy>
+<createdTime>2016-06-08 21:36:40 UTC</createdTime>
+<ownerDesignName>Playas_BD</ownerDesignName>
+<engineerTo>
+<item key="2EAF5775-AB44-DC58-9DA7-651E8A9A6C89" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4653581A-2043-132D-35D4-EDA845D5CDCB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
