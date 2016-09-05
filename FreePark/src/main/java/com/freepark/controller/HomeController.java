@@ -1,4 +1,4 @@
-package com.programacion2.freepark;
+package com.freepark.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
