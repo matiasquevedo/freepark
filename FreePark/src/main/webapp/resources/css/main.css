@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+html, body {
+	font: 12px 'Arial', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.428571429;
+	color: #333;
+	min-height: 100%;
+	background-color: #fff;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus {
+	text-decoration: none;
+	background: none;
+}
+
+.container {
+	background-color: #fff;
+}
+
+

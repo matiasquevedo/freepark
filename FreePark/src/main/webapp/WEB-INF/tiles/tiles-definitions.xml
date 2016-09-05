@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	<tiles-definitions>
+	<definition name="base.stylesheets" template="/WEB-INF/views/templates/page/stylesheets.jsp">
+		<!-- Style base -->
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/resources/css/bootstrap.min.css" />
+			<add-attribute value="/resources/css/font-awesome.min.css" />
+			<add-attribute value="/resources/css/jquery-ui.css" />
+			<add-attribute value="/resources/css/main.css" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="base.javascript" template="/WEB-INF/views/templates/page/js_footer.jsp">
+		<!-- JavaScript base -->
+		<put-list-attribute name="javascripts">
+			<add-attribute value="/resources/js/jquery.min.js" />
+			<add-attribute value="/resources/js/jquery-ui.min.js" />
+			<add-attribute value="/resources/js/bootstrap.min.js" />
+			<add-attribute value="/resources/js/main.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="defaultTemplate" template="/WEB-INF/views/templates/layout/layout.jsp">
+		<put-attribute name="title" 		expression="${titulo}" />
+		<put-attribute name="description" 	expression="${descripcion}" />
+		<put-attribute name="stylesheets" 	value="base.stylesheets" />
+		<put-attribute name="menu" 			value="/WEB-INF/views/templates/page/menu.jsp" />
+		<put-attribute name="tituloPagina" 	expression="${tituloPagina}" />
+		<put-attribute name="body" 			value="" />		
+		<put-attribute name="footer" 		value="/WEB-INF/views/templates/page/footer.jsp" />
+		<put-attribute name="js_footer" 	value="base.javascript" />
+	</definition>
+	
+	<!-- Formulario-->
+	<definition name="formulario" extends="defaultTemplate">
+		<put-attribute name="js_footer" value="validator.javascript" />
+	</definition>
+	
+	<definition name="validator.javascript" extends="base.javascript">
+		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="/resources/js/validate/validator.js" />
+		</put-list-attribute>
+	</definition>
+	
+</tiles-definitions>
