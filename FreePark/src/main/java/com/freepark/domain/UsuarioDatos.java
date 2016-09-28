@@ -36,9 +36,11 @@ public class UsuarioDatos implements java.io.Serializable {
 	
 	@NotNull
 	@Email
+	@Size(min=2, max=120)
 	@Column(name = "email")
 	private String email;
 	
+	@NotNull
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="usuarios_id")
 	private Usuario usuario;

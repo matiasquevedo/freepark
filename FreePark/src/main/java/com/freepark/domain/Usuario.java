@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -53,6 +55,13 @@ public class Usuario implements UserDetails, java.io.Serializable {
 
 	@Column(name = "activado")
 	private Boolean enabled;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name="usuarios_vehiculos", joinColumns={@JoinColumn(name="usuarios_id", referencedColumnName="id")}, 
+			inverseJoinColumns={@JoinColumn(name="vehiculos_id", referencedColumnName="id")}
+	)
+	private List<Usuario> vehiculo;
 
 	public Usuario() {
 

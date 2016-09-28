@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 @Entity
 @Table(name="roles")
 public class Rol implements java.io.Serializable { 
@@ -20,7 +21,7 @@ public class Rol implements java.io.Serializable {
 	private Long id;
 	
 	@NotNull
-	@Size(min=2 , max=30)
+	@Size(min=2 , max=20)
 	@Column(name="nombre")
 	private String nombre;
 	

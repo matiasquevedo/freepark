@@ -16,14 +16,12 @@ public abstract class ServiceImpl<T, ID extends Serializable> implements Service
 	@Override
 	public void create(T entity) {
 		dao.saveAndFlush(entity);
-
 	}
 
 	@Override
 	public void remove(T entity) {
 		dao.delete(entity);
 		dao.flush();
-
 	}
 
 	@Override

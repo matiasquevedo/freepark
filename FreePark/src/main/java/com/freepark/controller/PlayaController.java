@@ -10,20 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.freepark.service.impl.PlayasServiceImpl;
 
-/**
- * Handles requests for the application home page.
- */
-
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/playas")
+public class PlayaController {
 
-	private static final String URL_INDEX = "default/index";
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final String URL_INDEX = "playas/index";
+	private static final String URL_NUEVO = "playas/nuevo";
+	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
+	
+	@Autowired
+	private PlayasServiceImpl service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 		return URL_INDEX;
 	}
 	
+	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
+	public String nuevo(Model model) {	
+		return URL_NUEVO;
+	}
 }
