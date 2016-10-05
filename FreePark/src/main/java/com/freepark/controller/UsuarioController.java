@@ -17,7 +17,6 @@ public class UsuarioController {
 
 	private static final String URL_INDEX = "usuarios/index";
 	private static final String URL_NUEVO = "usuarios/nuevo";
-	private static final String URL_TODOS = "usuarios/todos";
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 	
 	@Autowired
@@ -38,13 +37,6 @@ public class UsuarioController {
 	public String form(Usuario usuario, Model model){
 		service.create(usuario);
 		return URL_INDEX;
-	}
-	
-	@RequestMapping(value = "/todos", method = RequestMethod.GET)
-	public String todos(Model model) {
-		String usuario = service.loadUserByUsername("pepito").getUsername();
-		model.addAttribute("usuario", usuario);
-		return URL_TODOS;
 	}
 	
 }

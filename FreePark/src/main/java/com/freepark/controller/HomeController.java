@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.freepark.service.impl.PlayasServiceImpl;
+import com.freepark.service.impl.PlayaServiceImpl;
 
 /**
  * Handles requests for the application home page.

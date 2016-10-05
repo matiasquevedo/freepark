@@ -9,7 +9,7 @@ import com.freepark.domain.Playa;
 import com.freepark.repository.PlayaRepository;
 
 @Service
-public class PlayasServiceImpl extends ServiceImpl<Playa, Long> {
+public class PlayaServiceImpl extends ServiceImpl<Playa, Long> {
 	
 	@Autowired
 	private PlayaRepository dao;

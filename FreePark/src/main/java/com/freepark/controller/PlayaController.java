@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.freepark.domain.Playa;
-import com.freepark.service.impl.PlayasServiceImpl;
+import com.freepark.service.impl.PlayaServiceImpl;
 
 @Controller
 @RequestMapping("/playas")
@@ -26,7 +26,7 @@ public class PlayaController {
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
 	@Autowired
-	private PlayasServiceImpl service;
+	private PlayaServiceImpl service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
