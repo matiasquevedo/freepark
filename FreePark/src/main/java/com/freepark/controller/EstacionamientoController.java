@@ -13,16 +13,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.freepark.domain.Estacionamiento;
 import com.freepark.domain.Playa;
 import com.freepark.service.impl.PlayasServiceImpl;
 
 @Controller
-@RequestMapping("/playas")
-public class PlayaController {
+@RequestMapping("/estacionamientos")
+public class EstacionamientoController {
 
-	private static final String URL_INDEX = "playas/index";
-	private static final String URL_NUEVO = "playas/nuevo";
-	private static final String URL_REDIRECT = "redirect:/playas/";
+	private static final String URL_INDEX = "estacionamientos/index";
+	private static final String URL_NUEVO = "estacionamientos/nuevo";
+	private static final String URL_REDIRECT = "redirect:/estacionamientos/";
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
 	@Autowired
@@ -30,21 +31,21 @@ public class PlayaController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("playas", service.findAll());
+		model.addAttribute("estacionamientos", service.findAll());
 		return URL_INDEX;
 	}
 	
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
 	public String nuevo(Model model) {
-		Playa playa = new Playa();
-		model.addAttribute("playa", playa);
+		Estacionamiento estacionamiento = new Estacionamiento();
+		model.addAttribute("estacionamiento", estacionamiento);
 		return URL_NUEVO;
 	}
 	
 	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model) {
+	public String guardar(@Valid @ModelAttribute("estacionamiento") Estacionamiento estacionamiento, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
-			service.create(playa);
+			service.create(estacionamiento);
 			return URL_REDIRECT;
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
