@@ -11,8 +11,6 @@
 				<div class="col-md-5">NOMBRE</div>
 				<div class="col-md-3">LATITUD</div>
 				<div class="col-md-3">LONGITUD</div>
-				<div class="col-md-3">EST C/T</div>
-				<div class="col-md-3">EST S/T</div>
 			</div>
 			<c:forEach var="playa" items="${playas}" >
 				<div class="row">
