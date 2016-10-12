@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,6 +23,7 @@ public class PlayaController {
 
 	private static final String URL_INDEX = "playas/index";
 	private static final String URL_NUEVO = "playas/nuevo";
+	private static final String URL_EDITAR = "playas/editar";
 	private static final String URL_REDIRECT = "redirect:/playas/";
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
@@ -54,4 +56,12 @@ public class PlayaController {
 		return URL_NUEVO;
 	}
 	
+	
+	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.POST)
+	public String editar(@Valid @PathVariable("id_playa") long id_playa, Model model){
+		model.addAttribute("playas", service.findById(id_playa));
+		
+		return URL_EDITAR;
+	
+	}
 }
