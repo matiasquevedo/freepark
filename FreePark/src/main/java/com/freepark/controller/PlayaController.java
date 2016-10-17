@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.freepark.domain.Estacionamiento;
 import com.freepark.domain.Playa;
 import com.freepark.service.impl.PlayaServiceImpl;
 
@@ -60,7 +61,9 @@ public class PlayaController {
 	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.GET)
 	public String editar(@Valid @PathVariable("id_playa") long id_playa, Model model){
 		Playa playa = service.findById(id_playa);
-		model.addAttribute("playa", playa);		
+		Estacionamiento estacionamiento = new Estacionamiento();
+		model.addAttribute("playa", playa);
+		model.addAttribute("estacionamiento", estacionamiento);
 		return URL_EDITAR;	
 	}
 	
