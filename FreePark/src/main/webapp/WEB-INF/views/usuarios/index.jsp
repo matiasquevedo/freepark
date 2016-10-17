@@ -6,5 +6,6 @@
 	<tiles:putAttribute name="body">
 		<h1>Opciones de Administracion</h1>
 		<div>Usuarios</div>
+		<div><c:out value="${u}" /></div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

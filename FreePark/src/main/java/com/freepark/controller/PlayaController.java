@@ -57,11 +57,24 @@ public class PlayaController {
 	}
 	
 	
-	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.POST)
+	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.GET)
 	public String editar(@Valid @PathVariable("id_playa") long id_playa, Model model){
-		model.addAttribute("playas", service.findById(id_playa));
-		
-		return URL_EDITAR;
-	
+		Playa playa = service.findById(id_playa);
+		model.addAttribute("playa", playa);		
+		return URL_EDITAR;	
 	}
+	
+	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.POST)
+	public String actualizar(@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model) {
+		if (!result.hasErrors()) {
+			service.update(playa);
+			return URL_REDIRECT;
+		} else {
+			for (ObjectError error : result.getAllErrors()) {
+				logger.info("Validation error: " + error.getDefaultMessage());
+			}
+		}
+		return URL_NUEVO;
+	}
+	
 }
