@@ -61,7 +61,7 @@ public class Usuario implements UserDetails, java.io.Serializable {
 			name="usuarios_vehiculos", joinColumns={@JoinColumn(name="usuarios_id", referencedColumnName="id")}, 
 			inverseJoinColumns={@JoinColumn(name="vehiculos_id", referencedColumnName="id")}
 	)
-	private List<Usuario> vehiculo;
+	private List<Vehiculo> vehiculos;
 
 	public Usuario() {
 
@@ -180,7 +180,7 @@ public class Usuario implements UserDetails, java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", enabled=" + enabled + "]";
+		return "Usuario [id=" + id + ", username=" + username + ", enabled=" + enabled + ", vehiculos=" + vehiculos.get(0) + "]";
 	}
 
 }

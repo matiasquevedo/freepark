@@ -24,7 +24,7 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("u", service.findById((long) 2));
+		model.addAttribute("u", service.findById((long) 1));
 		return URL_INDEX;
 	}
 	

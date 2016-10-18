@@ -1,5 +1,7 @@
 package com.freepark.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.freepark.domain.Estacionamiento;
 import com.freepark.domain.Playa;
@@ -37,6 +40,12 @@ public class PlayaController {
 		return URL_INDEX;
 	}
 	
+	@RequestMapping(value = "/list.json", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Playa> index2(Model model) {
+		return service.findAll();
+	}
+	
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
 	public String nuevo(Model model) {
 		Playa playa = new Playa();
@@ -56,7 +65,6 @@ public class PlayaController {
 		}
 		return URL_NUEVO;
 	}
-	
 	
 	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.GET)
 	public String editar(@Valid @PathVariable("id_playa") long id_playa, Model model){
