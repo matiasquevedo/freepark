@@ -82,6 +82,7 @@
 								<c:if test="${status.error}">
 									<span class="text-danger">${status.errorMessage}</span>
 								</c:if>
+							</div>
 						</spring:bind>
 
 						<spring:bind path="techo">
@@ -99,6 +100,7 @@
 						<div class="col-md-2">
 							<button type="submit" class="btn glyphicon glyphicon-plus"></button>
 						</div>
+					</div>
 				</form:form>
 			</div>
 
@@ -117,8 +119,7 @@
 				</div>
 			</c:forEach>
 </div>
-</div>
+
 
 </tiles:putAttribute>
 </tiles:insertDefinition>
-</div>
