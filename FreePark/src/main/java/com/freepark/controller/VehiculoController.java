@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,11 +41,7 @@ public class VehiculoController {
 		return URL_REDIRECT;
 	}*/
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-=======
-	/*@RequestMapping(value = "/", method = RequestMethod.POST)
->>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 	public String borrar(@Valid @ModelAttribute("vehiculo") Vehiculo vehiculo, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
 			service.remove(vehiculo);
@@ -57,10 +52,6 @@ public class VehiculoController {
 			}
 		}
 		return URL_REDIRECT;
-<<<<<<< HEAD
 	}
-=======
-	}*/
->>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 	
 }
