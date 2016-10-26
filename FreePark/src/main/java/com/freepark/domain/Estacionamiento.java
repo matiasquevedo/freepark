@@ -27,8 +27,15 @@ public class Estacionamiento {
 	private Boolean estado;
 	
 	@NotNull
+	@Column(name="referencia")
+	private String referencia;
+
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="playas_id", referencedColumnName="id")
+	@JoinTable(
+			name="playas_estacionamientos", joinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}, 
+			inverseJoinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}
+	)
 	private Playa playas_id;
 	
 	@NotNull
@@ -65,6 +72,14 @@ public class Estacionamiento {
 
 	public void setTecho(Boolean techo) {
 		this.techo = techo;
+	}
+	
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
 	}
 
 	@Override

@@ -31,27 +31,27 @@ public class VehiculoController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("vehiculos", service.findAll());
+		model.addAttribute("vehiculo", new Vehiculo());
 		return URL_INDEX;
 	}
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
-	public String nuevo(Model model) {
-		Vehiculo vehiculo = new Vehiculo();
-		model.addAttribute("vehiculo", vehiculo);
-		return URL_NUEVO;
-	}
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String eliminar(@Valid @PathVariable("id_vehiculo") Vehiculo vehiculo, Model model) {
+		service.remove(vehiculo);
+		return URL_REDIRECT;
+	}*/
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("vehiculo") Vehiculo vehiculo, BindingResult result, Model model) {
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String borrar(@Valid @ModelAttribute("vehiculo") Vehiculo vehiculo, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
-			service.create(vehiculo);
+			service.remove(vehiculo);
 			return URL_REDIRECT;
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
 				logger.info("Validation error: " + error.getDefaultMessage());
 			}
 		}
-		return URL_NUEVO;
+		return URL_REDIRECT;
 	}
 	
 }

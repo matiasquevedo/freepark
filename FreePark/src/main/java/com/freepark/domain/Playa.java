@@ -1,10 +1,18 @@
 package com.freepark.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,22 +21,37 @@ import javax.validation.constraints.Size;
 @Table(name = "playas")
 public class Playa {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
-	
+
 	@NotNull
-	@Size(min=2 , max=30)
-	@Column(name="nombre")
+	@Size(min = 2, max = 30)
+	@Column(name = "nombre")
 	private String nombre;
-	
+
 	@NotNull
-	@Column(name="latitud")
+	@Column(name = "latitud")
 	private String latitud;
-	
+
 	@NotNull
-	@Column(name="longitud")
+	@Column(name = "longitud")
 	private String longitud;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name="playas_estacionamientos", joinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}, 
+			inverseJoinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}
+	)
+	private List<Estacionamiento> estacionamientos;
+
+	public List<Estacionamiento> getEstacionamientos() {
+		return estacionamientos;
+	}
+
+	public void setEstacionamientos(List<Estacionamiento> estacionamientos) {
+		this.estacionamientos = estacionamientos;
+	}
 
 	public Playa() {
 		super();
@@ -102,5 +125,5 @@ public class Playa {
 			return false;
 		return true;
 	}
-	
+
 }
