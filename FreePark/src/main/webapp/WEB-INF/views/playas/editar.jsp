@@ -10,6 +10,7 @@
 				<h1>Administracion de Playas</h1>
 			</center>
 
+<<<<<<< HEAD
 			<div class="row center-block">
 				<!-- Descripcion de Playa -->
 				<form:form method="POST" modelAttribute="playa"
@@ -46,6 +47,54 @@
 					</spring:bind>
 					<button type="submit" class="btn btn-success">Guardar</button>
 				</form:form>
+=======
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<!-- Descripcion de Playa -->
+					<form:form method="POST" modelAttribute="playa"
+						cssClass="form-horizontal">
+						<spring:bind path="id">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<form:hidden path="id" />
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<spring:bind path="nombre">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="nombre">
+									Nombre: </label>
+								<form:input path="nombre" />
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<spring:bind path="latitud">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="latitud">
+									Latitud: </label>
+								<form:input path="latitud" />
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<spring:bind path="longitud">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="longitud">
+									Longitud: </label>
+								<form:input path="longitud" />
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<button type="submit" class="btn btn-success">Guardar</button>
+					</form:form>
+				</div>
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 			</div>
 
 			<center>
@@ -57,6 +106,7 @@
 					cssClass="form-horizontal col-md-6 col-md-offset-3 well">
 					<div class="col-md-10">
 						<spring:bind path="estado">
+<<<<<<< HEAD
 							<div class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
 								<label class="control-label col-md-6" for="estado">
 									Estado: </label>
@@ -70,6 +120,25 @@
 						<span class="text-danger">${status.errorMessage}</span>
 					</c:if>
 					</spring:bind>
+=======
+							<div
+								class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label col-md-6" for="estado">
+									Estado: </label>
+								<div class="row">
+									<form:radiobutton path="estado" value="1" />
+									Disponible
+								</div>
+								<div class="row">
+									<form:radiobutton path="estado" value="0" />
+									Reservado
+								</div>
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 
 						<spring:bind path="techo">
 							<div
@@ -86,6 +155,10 @@
 						<div class="col-md-2">
 							<button type="submit" class="btn glyphicon glyphicon-plus"></button>
 						</div>
+<<<<<<< HEAD
+=======
+					</div>
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 				</form:form>
 			</div>
 
@@ -104,8 +177,15 @@
 				</div>
 			</c:forEach>
 </div>
+<<<<<<< HEAD
 </div>
 
 </tiles:putAttribute>
 </tiles:insertDefinition>
 </div>
+=======
+
+
+</tiles:putAttribute>
+</tiles:insertDefinition>
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79

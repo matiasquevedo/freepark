@@ -28,6 +28,7 @@
 							<td><c:out value="${vehiculo.modelo}" /></td>
 							<td>
 								<form:form method="POST" modelAttribute="vehiculo">
+<<<<<<< HEAD
 									<spring:bind path="id">
 										<div class="form-group ${status.error ? 'has-error' : '' }">
 											<form:hidden path="id" value="${vehiculo.id}" />
@@ -55,14 +56,26 @@
 									<spring:bind path="modelo">
 										<div class="form-group ${status.error ? 'has-error' : '' }">
 											<form:hidden path="modelo" value="${vehiculo.modelo}" />
+=======
+									<spring:bind path="vehiculo">
+										<div
+											class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
+											<form:hidden path="vehiculo" value="${vehiculo}" />
+
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 											<c:if test="${status.error}">
 												<span class="text-danger">${status.errorMessage}</span>
 											</c:if>
 										</div>
 									</spring:bind>
+<<<<<<< HEAD
 									<button type="submit" class="btn btn-default">
 										 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									</button>
+=======
+									
+									<button type="submit" class="btn glyphicon glyphicon-plus"></button>
+>>>>>>> 03ec583423fe2066124c0250c9f2046e942c0a79
 								</form:form>
 							</td>
 						</tr>
