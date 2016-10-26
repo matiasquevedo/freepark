@@ -1,5 +1,6 @@
 package com.freepark.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.freepark.domain.Estacionamiento;
 import com.freepark.domain.Playa;
+import com.freepark.service.impl.EstacionamientoServiceImpl;
 import com.freepark.service.impl.PlayaServiceImpl;
 
 @Controller
@@ -32,7 +34,11 @@ public class PlayaController {
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
 	@Autowired
+	private EstacionamientoServiceImpl servest;
+	
+	@Autowired
 	private PlayaServiceImpl service;
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
@@ -45,6 +51,7 @@ public class PlayaController {
 	public List<Playa> index2(Model model) {
 		return service.findAll();
 	}
+	
 	
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
 	public String nuevo(Model model) {
@@ -78,6 +85,17 @@ public class PlayaController {
 	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.POST)
 	public String actualizar(@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
+			Estacionamiento e = new Estacionamiento();
+			e.setEstado(true);
+			e.setPlayas_id(playa);
+			e.setTecho(true);
+			e.setReferencia("14A");
+			List<Estacionamiento> ests = new ArrayList<Estacionamiento>();
+			ests.add(e);
+			playa.setEstacionamientos(ests);
+			
+			//Necesitamos crear primero el estacionamiento antes de relacionarlo
+			
 			service.update(playa);
 			return URL_REDIRECT;
 		} else {

@@ -1,57 +1,54 @@
 package com.freepark.controller;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.freepark.domain.Estacionamiento;
+import com.freepark.domain.Playa;
 import com.freepark.service.impl.EstacionamientoServiceImpl;
+import com.freepark.service.impl.PlayaServiceImpl;
 
 @Controller
 @RequestMapping("/estacionamientos")
 public class EstacionamientoController {
 
-	private static final String URL_INDEX = "estacionamientos/index";
-	private static final String URL_NUEVO = "estacionamientos/nuevo";
 	private static final String URL_REDIRECT = "redirect:/estacionamientos/";
-	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EstacionamientoController.class);
 	
 	@Autowired
 	private EstacionamientoServiceImpl service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model) {
-		model.addAttribute("estacionamientos", service.findAll());
-		return URL_INDEX;
-	}
+	@Autowired
+	private PlayaServiceImpl playaservice;
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
-	public String nuevo(Model model) {
-		Estacionamiento estacionamiento = new Estacionamiento();
-		model.addAttribute("estacionamiento", estacionamiento);
-		return URL_NUEVO;
+	@RequestMapping(value = "/nuevo.json", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean nuevo(@RequestBody Estacionamiento estacionamiento) {
+		service.create(estacionamiento);
+		return true;
 	}
-	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("estacionamiento") Estacionamiento estacionamiento, BindingResult result, Model model) {
-		if (!result.hasErrors()) {
-			service.create(estacionamiento);
-			return URL_REDIRECT;
-		} else {
-			for (ObjectError error : result.getAllErrors()) {
-				logger.info("Validation error: " + error.getDefaultMessage());
-			}
+
+	@RequestMapping(value = "/listbyplaya.json/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Estacionamiento> buscar(@PathVariable Long id) {
+		return playaservice.findById((long) id).getEstacionamientos();	
 		}
-		return URL_NUEVO;
-	}
 	
+	@RequestMapping(value = "/eliminar.json", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean eliminar(@RequestBody Estacionamiento estacionamiento) {
+		service.remove(estacionamiento);
+		return true;
+		}
 }

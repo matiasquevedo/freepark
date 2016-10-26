@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "playas")
 public class Playa {
@@ -43,6 +45,7 @@ public class Playa {
 			name="playas_estacionamientos", joinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}, 
 			inverseJoinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}
 	)
+	@JsonIgnore
 	private List<Estacionamiento> estacionamientos;
 
 	public List<Estacionamiento> getEstacionamientos() {

@@ -1,7 +1,113 @@
 <%@ include file="/WEB-INF/views/templates/layout/tags.jsp"%>
 <%@ page session="false"%>
 
-<div class="container panel panel-primary" style="margin-top: 50px;">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	jQuery(document)
+			.ready(
+					function() {
+						$("#deleteEst").click(function(){
+							eliminarEst();
+						});
+						
+						$("#agregarest")
+								.submit(
+										function(event) {
+
+											event.preventDefault();
+
+											var estacionamiento = {
+												"referencia" : $("#referencia")
+														.val(),
+												"estado" : $("#estado").val(),
+												"techo" : $("#techo").val(),
+												"playa" : {
+													"id" : $("#id").val(),
+													"nombre" : $("#nombre")
+															.val(),
+													"latitud" : $("#latitud")
+															.val(),
+													"longitud" : $("#longitud")
+															.val()
+												}
+											}
+
+											$.ajax({
+														type : 'POST',
+														url : '${pageContext.request.contextPath}/estacionamientos/nuevo.json',
+														contentType : 'application/json; charset=utf-8',
+														dataType : 'json',
+														data : JSON
+																.stringify(estacionamiento),
+														success : function(data) {
+			
+															alert(data)
+															ActEstacionamientos(estacionamiento);
+
+														}
+													})
+										})
+					})
+
+	function ActEstacionamientos(estacionamiento) {
+		$
+				.ajax({
+					url : '${pageContext.request.contextPath}/estacionamientos/listbyplaya.json/'
+							+ estacionamiento["playa"]["id"],
+					type : 'GET',
+					contentType : "application/json",
+					success : function(data) {
+
+						$("table tbody").empty();
+						$.each(
+										data,
+										function(key, value) {
+
+											$("table tbody")
+													.append(
+															"<tr><td id='idEst' style='display:none'>"
+																	+ value["id"]
+																	+ "</td><th id='refEst' class='col-md-2'>"
+																	+ value["referencia"]
+																	+ "</th><td id=estadodEst' class='col-md-5'>"
+																	+ value["estado"]
+																	+ "</td><td id='techoEst' class='col-md-5'>"
+																	+ value["techo"]
+																	+ "</td><td id='deleteEst' class='col-md-1'><span class='glyphicon glyphicon-trash'></span></td></tr>")
+										})
+
+					}
+				})
+
+	}
+
+	function eliminarEst() {
+		var estacionamiento = {
+			"id" : $("#id").val(),
+			"referencia" : $("#refEst").val(),
+			"estado" : $("#estadoEst").val(),
+			"techo" : $("#techoEst").val(),
+			"playa" : {
+				"id" : $("#id").val(),
+				"nombre" : $("#nombre").val(),
+				"latitud" : $("#latitud").val(),
+				"longitud" : $("#longitud").val()
+				}
+			}
+		$.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/estacionamientos/eliminar.json',
+					contentType : 'application/json; charset=utf-8',
+					dataType : 'json',
+					data : JSON.stringify(estacionamiento),
+					success : function(data) {
+						alert("DELETEADO")
+					}
+				})
+	}
+</script>
+<div class="container" style="margin-top: 50px;">
 	<tiles:insertDefinition name="defaultTemplate">
 		<tiles:putAttribute name="mensajes"
 			value="/WEB-INF/views/templates/page/mensajes.jsp" />
@@ -10,102 +116,103 @@
 				<h1>Administracion de Playas</h1>
 			</center>
 
-			<div class="row center-block">
-				<!-- Descripcion de Playa -->
-				<form:form method="POST" modelAttribute="playa"
-					cssClass="form-horizontal col-md-6 col-md-offset-3 well">
-					<spring:bind path="nombre">
-						<div class="form-group ${status.error ? 'has-error' : '' }">
-							<label class="control-label col-md-2" for="nombre">
-								Nombre: </label>
-							<form:input path="nombre" />
-							<c:if test="${status.error}">
-								<span class="text-danger">${status.errorMessage}</span>
-							</c:if>
-						</div>
-					</spring:bind>
-					<spring:bind path="latitud">
-						<div class="form-group ${status.error ? 'has-error' : '' }">
-							<label class="control-label col-md-2" for="latitud">
-								Latitud: </label>
-							<form:input path="latitud" />
-							<c:if test="${status.error}">
-								<span class="text-danger">${status.errorMessage}</span>
-							</c:if>
-						</div>
-					</spring:bind>
-					<spring:bind path="longitud">
-						<div class="form-group ${status.error ? 'has-error' : '' }">
-							<label class="control-label col-md-2" for="longitud">
-								Longitud: </label>
-							<form:input path="longitud" />
-							<c:if test="${status.error}">
-								<span class="text-danger">${status.errorMessage}</span>
-							</c:if>
-						</div>
-					</spring:bind>
-					<button type="submit" class="btn btn-success">Guardar</button>
-				</form:form>
-			</div>
-
-			<center>
-				<h3>Estacionamientos</h3>
-			</center>
-
 			<div class="row">
-				<form:form method="POST" modelAttribute="estacionamiento"
-					cssClass="form-horizontal col-md-6 col-md-offset-3 well">
-					<div class="col-md-10">
-						<spring:bind path="estado">
-							<div class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
-								<label class="control-label col-md-6" for="estado">
-									Estado: </label>
-								<div class="row"> <form:radiobutton path="estado"
-									value="1" />Disponible 
-							</div>
-							<div class="row"> <form:radiobutton path="estado"
-								value="0" />Reservado 
-					</div>
-					<c:if test="${status.error}">
-						<span class="text-danger">${status.errorMessage}</span>
-					</c:if>
-					</spring:bind>
-
-						<spring:bind path="techo">
-							<div
-								class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
-								<label class="control-label col-md-6" for="techo">
-									Techo: </label>
-								<form:checkbox path="techo" />
+				<div class="col-md-4 col-md-offset-4">
+					<!-- Descripcion de Playa -->
+					<form:form method="POST" modelAttribute="playa"
+						cssClass="form-horizontal">
+						<spring:bind path="id">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<form:hidden path="id" />
 								<c:if test="${status.error}">
 									<span class="text-danger">${status.errorMessage}</span>
 								</c:if>
 							</div>
 						</spring:bind>
-
-						<div class="col-md-2">
-							<button type="submit" class="btn glyphicon glyphicon-plus"></button>
-						</div>
-				</form:form>
-			</div>
-
-			<div class="row well">
-				<div class="col-md-2">ID</div>
-				<div class="col-md-5">ESTADO</div>
-				<div class="col-md-5">TECHO</div>
-			</div>
-			<c:forEach var="relEstacionamiento" items="${playa.estacionamientos}">
-				<div class="row well">
-					<div class="col-md-2">
-						<a href="${relEstacionamiento.id}">${relEstacionamiento.referencia}</a>
-					</div>
-					<div class="col-md-5">${relEstacionamiento.estado}</div>
-					<div class="col-md-5">${relEstacionamiento.techo}</div>
+						<spring:bind path="nombre">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="nombre">Nombre:</label>
+								<form:input class="form-control" path="nombre" />
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<spring:bind path="latitud">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="latitud"> Latitud: </label>
+								<div class="input-group">
+									<span class="input-group-addon">º</span>
+									<form:input class="form-control" path="latitud" />
+								</div>
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<spring:bind path="longitud">
+							<div class="form-group ${status.error ? 'has-error' : '' }">
+								<label class="control-label" for="longitud"> Longitud: </label>
+								<div class="input-group">
+									<span class="input-group-addon">º</span>
+									<form:input class="form-control" path="longitud" />
+								</div>
+								<c:if test="${status.error}">
+									<span class="text-danger">${status.errorMessage}</span>
+								</c:if>
+							</div>
+						</spring:bind>
+						<button type="submit" class="btn btn-success">Guardar</button>
+					</form:form>
 				</div>
-			</c:forEach>
-</div>
-</div>
+			</div>
 
-</tiles:putAttribute>
-</tiles:insertDefinition>
+			<center>
+				<h2>Estacionamientos</h2>
+			</center>
+
+			<div class="row">
+				<div class="col-md-3">
+					<form:form id="agregarest" cssClass="form-horizontal">
+						<div class="form-group">
+							<label for="referencia" class="control-label">Referencia</label>
+							<input class="form-control" id="referencia">
+						</div>
+						<div class="form-group">
+							<label for="estado" class="control-label">Estado</label> <input
+								class="form-control" id="estado">
+						</div>
+						<div class="form-group">
+							<label for="techo" class="control-label">Techo</label> <input
+								class="form-control" id="techo">
+						</div>
+						<button type="submit" class="btn glyphicon glyphicon-plus"></button>
+					</form:form>
+				</div>
+			</div>
+
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-2">REFERENCIA</th>
+						<th class="col-md-5">ESTADO</th>
+						<th class="col-md-5">TECHO</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="relEstacionamiento"
+						items="${playa.estacionamientos}">
+						<tr>
+							<td id="idEst" style='display: none'>${relEstacionamiento.referencia}</td>
+							<th id="refEst" class="col-md-1">${relEstacionamiento.referencia}</th>
+							<td id="estadoEst" class="col-md-5">${relEstacionamiento.estado}</td>
+							<td id="techoEst" class="col-md-5">${relEstacionamiento.techo}</td>
+							<td id="deleteEst" class="col-md-1"><span
+								class="glyphicon glyphicon-trash"></span></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</tiles:putAttribute>
+	</tiles:insertDefinition>
 </div>

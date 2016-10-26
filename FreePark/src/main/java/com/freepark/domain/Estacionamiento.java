@@ -29,6 +29,10 @@ public class Estacionamiento {
 	@NotNull
 	@Column(name="referencia")
 	private String referencia;
+	
+	@NotNull
+	@Column(name="techo")
+	private Boolean techo;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -36,12 +40,8 @@ public class Estacionamiento {
 			name="playas_estacionamientos", joinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}, 
 			inverseJoinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}
 	)
-	private Playa playas_id;
+	private Playa playa;
 	
-	@NotNull
-	@Column(name="techo")
-	private Boolean techo;
-
 	public Long getId() {
 		return id;
 	}
@@ -58,12 +58,12 @@ public class Estacionamiento {
 		this.estado = estado;
 	}
 
-	public Playa getPlayas_id() {
-		return playas_id;
+	public Playa getPlaya() {
+		return playa;
 	}
 
-	public void setPlayas_id(Playa playas_id) {
-		this.playas_id = playas_id;
+	public void setPlayas_id(Playa playa) {
+		this.playa = playa;
 	}
 
 	public Boolean getTecho() {
@@ -85,7 +85,7 @@ public class Estacionamiento {
 	@Override
 	public String toString() {
 		return "Estacionamieto [id=" + id + ", estado=" + estado
-				+ ", playas_id=" + playas_id + ", techo=" + techo + "]";
+				+ ", playas_id=" + playa + ", techo=" + techo + "]";
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class Estacionamiento {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
-				+ ((playas_id == null) ? 0 : playas_id.hashCode());
+				+ ((playa == null) ? 0 : playa.hashCode());
 		return result;
 	}
 
@@ -112,10 +112,10 @@ public class Estacionamiento {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (playas_id == null) {
-			if (other.playas_id != null)
+		if (playa == null) {
+			if (other.playa != null)
 				return false;
-		} else if (!playas_id.equals(other.playas_id))
+		} else if (!playa.equals(other.playa))
 			return false;
 		return true;
 	}
