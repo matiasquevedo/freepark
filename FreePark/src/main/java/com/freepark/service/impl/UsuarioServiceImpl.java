@@ -54,4 +54,10 @@ public class UsuarioServiceImpl extends ServiceImpl<Usuario, Long> implements Us
 		}
 		
 	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 }

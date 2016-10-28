@@ -38,5 +38,11 @@ public class EstacionamientoServiceImpl extends ServiceImpl<Estacionamiento, Lon
 	public List<Estacionamiento> findAll() {
 		return super.findAll();
 	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

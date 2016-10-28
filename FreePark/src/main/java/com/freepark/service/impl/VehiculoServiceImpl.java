@@ -42,5 +42,11 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> {
 		// TODO Auto-generated method stub
 		return super.findAll();
 	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

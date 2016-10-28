@@ -38,5 +38,11 @@ public class PlayaServiceImpl extends ServiceImpl<Playa, Long> {
 	public List<Playa> findAll() {
 		return super.findAll();
 	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
