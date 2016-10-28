@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.freepark.domain.Usuario;
+import com.freepark.domain.Vehiculo;
 import com.freepark.repository.UsuarioRepository;
 
 @Service
@@ -53,5 +54,12 @@ public class UsuarioServiceImpl extends ServiceImpl<Usuario, Long> implements Us
 			return null;
 		}
 		
+	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		Usuario entity = super.findById(id);
+		super.remove(entity);
 	}
 }

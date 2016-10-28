@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.freepark.domain.Reserva;
 import com.freepark.domain.Vehiculo;
 import com.freepark.repository.VehiculoRepository;
 
@@ -41,6 +42,13 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> {
 	public List<Vehiculo> findAll() {
 		// TODO Auto-generated method stub
 		return super.findAll();
+	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		Vehiculo entity = super.findById(id);
+		super.remove(entity);
 	}
 	
 }

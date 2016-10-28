@@ -38,5 +38,12 @@ public class ReservaServiceImpl extends ServiceImpl<Reserva, Long> {
 	public List<Reserva> findAll() {
 		return super.findAll();
 	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		Reserva entity = super.findById(id);
+		super.remove(entity);
+	}
 	
 }

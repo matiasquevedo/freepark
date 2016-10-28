@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.freepark.domain.Playa;
+import com.freepark.domain.Usuario;
 import com.freepark.repository.PlayaRepository;
 
 @Service
@@ -37,6 +38,13 @@ public class PlayaServiceImpl extends ServiceImpl<Playa, Long> {
 	@Override
 	public List<Playa> findAll() {
 		return super.findAll();
+	}
+
+	@Override
+	public void removeById(Long id) {
+		// TODO Auto-generated method stub
+		Playa entity = super.findById(id);
+		super.remove(entity);
 	}
 	
 }
