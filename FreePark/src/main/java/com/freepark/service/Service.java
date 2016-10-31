@@ -9,6 +9,7 @@ public interface Service<T, ID extends Serializable> {
 	void remove(final T entity);
 	void update(final T entity);
 	T findById(final ID id);
+	void removeById(final ID id);
 
 	List<T> findAll();
 }

@@ -38,4 +38,9 @@ public abstract class ServiceImpl<T, ID extends Serializable> implements Service
 	public List<T> findAll() {
 		return dao.findAll();
 	}
+	
+	@Override
+	public void removeById(ID id) {
+		dao.delete(id);
+	}
 }

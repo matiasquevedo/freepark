@@ -43,4 +43,9 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> {
 		return super.findAll();
 	}
 	
+	@Override
+	public void removeById(Long id) {
+		super.removeById(id);
+	}
+	
 }
