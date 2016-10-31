@@ -4,32 +4,26 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
-	jQuery(document)
-			.ready(
+	jQuery(document).ready(
 					function() {
-						$("#deleteEst").click(function(){
-							eliminarEst();
-						});
-						
-						$("#agregarest")
-								.submit(
-										function(event) {
+						$("table tbody").on("click", "td.deleteEst",
+								function() {
+									eliminarEst($(this));
+								})
 
+						$("#agregarest").submit(
+										function(event) {
 											event.preventDefault();
 
 											var estacionamiento = {
-												"referencia" : $("#referencia")
-														.val(),
+												"referencia" : $("#referencia").val(),
 												"estado" : $("#estado").val(),
 												"techo" : $("#techo").val(),
 												"playa" : {
 													"id" : $("#id").val(),
-													"nombre" : $("#nombre")
-															.val(),
-													"latitud" : $("#latitud")
-															.val(),
-													"longitud" : $("#longitud")
-															.val()
+													"nombre" : $("#nombre").val(),
+													"latitud" : $("#latitud").val(),
+													"longitud" : $("#longitud").val()
 												}
 											}
 
@@ -41,60 +35,28 @@
 														data : JSON
 																.stringify(estacionamiento),
 														success : function(data) {
-			
-															alert(data)
+															alert("Agregado")
 															ActEstacionamientos(estacionamiento);
-
 														}
 													})
 										})
 					})
 
-	function ActEstacionamientos(estacionamiento) {
-		$
-				.ajax({
-					url : '${pageContext.request.contextPath}/estacionamientos/listbyplaya.json/'
-							+ estacionamiento["playa"]["id"],
-					type : 'GET',
-					contentType : "application/json",
-					success : function(data) {
 
-						$("table tbody").empty();
-						$.each(
-										data,
-										function(key, value) {
-
-											$("table tbody")
-													.append(
-															"<tr><td id='idEst' style='display:none'>"
-																	+ value["id"]
-																	+ "</td><th id='refEst' class='col-md-2'>"
-																	+ value["referencia"]
-																	+ "</th><td id=estadodEst' class='col-md-5'>"
-																	+ value["estado"]
-																	+ "</td><td id='techoEst' class='col-md-5'>"
-																	+ value["techo"]
-																	+ "</td><td id='deleteEst' class='col-md-1'><span class='glyphicon glyphicon-trash'></span></td></tr>")
-										})
-
-					}
-				})
-
-	}
-
-	function eliminarEst() {
+	function eliminarEst(obj) {
 		var estacionamiento = {
-			"id" : $("#id").val(),
-			"referencia" : $("#refEst").val(),
-			"estado" : $("#estadoEst").val(),
-			"techo" : $("#techoEst").val(),
+			"id" : obj.siblings(".idEst").html(),
+			"referencia" : obj.siblings(".refEst").html(),
+			"estado" : obj.siblings(".estadoEst").html(),
+			"techo" : obj.siblings(".techoEst").html(),
 			"playa" : {
 				"id" : $("#id").val(),
 				"nombre" : $("#nombre").val(),
 				"latitud" : $("#latitud").val(),
 				"longitud" : $("#longitud").val()
-				}
 			}
+		}
+
 		$.ajax({
 					type : 'POST',
 					url : '${pageContext.request.contextPath}/estacionamientos/eliminar.json',
@@ -102,12 +64,42 @@
 					dataType : 'json',
 					data : JSON.stringify(estacionamiento),
 					success : function(data) {
-						alert("DELETEADO")
+						ActEstacionamientos(estacionamiento)
 					}
 				})
 	}
+	
+	function ActEstacionamientos(estacionamiento) {
+		$.ajax({
+					url : '${pageContext.request.contextPath}/estacionamientos/listbyplaya.json/'
+							+ estacionamiento["playa"]["id"],
+					type : 'GET',
+					contentType : "application/json",
+					success : function(data) {
+
+						$("table tbody").empty();
+						$.each(data, function(key, value) {
+			
+								$("table tbody")
+										.append(
+												"<tr><td class='idEst' style='display:none'>"
+														+ value["id"]
+														+ "</td><th class='refEst col-md-2'>"
+														+ value["referencia"]
+														+ "</th><td class='estadoEst col-md-5'>"
+														+ value["estado"]
+														+ "</td><td class='techoEst col-md-5'>"
+														+ value["techo"]
+														+ "</td><td class='deleteEst col-md-1'><span class='glyphicon glyphicon-trash'></span></td></tr>")
+							})
+
+					}
+				})
+
+	}
 </script>
 <div class="container" style="margin-top: 50px;">
+
 	<tiles:insertDefinition name="defaultTemplate">
 		<tiles:putAttribute name="mensajes"
 			value="/WEB-INF/views/templates/page/mensajes.jsp" />
@@ -203,11 +195,11 @@
 					<c:forEach var="relEstacionamiento"
 						items="${playa.estacionamientos}">
 						<tr>
-							<td id="idEst" style='display: none'>${relEstacionamiento.referencia}</td>
-							<th id="refEst" class="col-md-1">${relEstacionamiento.referencia}</th>
-							<td id="estadoEst" class="col-md-5">${relEstacionamiento.estado}</td>
-							<td id="techoEst" class="col-md-5">${relEstacionamiento.techo}</td>
-							<td id="deleteEst" class="col-md-1"><span
+							<td class="idEst" style='display: none'>${relEstacionamiento.id}</td>
+							<th class="refEst col-md-1">${relEstacionamiento.referencia}</th>
+							<td class="estadoEst col-md-5">${relEstacionamiento.estado}</td>
+							<td class="techoEst col-md-5">${relEstacionamiento.techo}</td>
+							<td class="deleteEst col-md-1"><span
 								class="glyphicon glyphicon-trash"></span></td>
 						</tr>
 					</c:forEach>

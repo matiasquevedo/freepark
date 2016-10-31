@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,24 +35,23 @@ public class VehiculoController {
 		return URL_INDEX;
 	}
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
-	public String nuevo(Model model) {
-		Vehiculo vehiculo = new Vehiculo();
-		model.addAttribute("vehiculo", vehiculo);
-		return URL_NUEVO;
-	}
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String eliminar(@Valid @PathVariable("id_vehiculo") Vehiculo vehiculo, Model model) {
+		service.remove(vehiculo);
+		return URL_REDIRECT;
+	}*/
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("vehiculo") Vehiculo vehiculo, BindingResult result, Model model) {
+	/*@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String borrar(@Valid @ModelAttribute("vehiculo") Vehiculo vehiculo, BindingResult result, Model model) {
 		if (!result.hasErrors()) {
-			service.create(vehiculo);
+			service.remove(vehiculo);
 			return URL_REDIRECT;
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
 				logger.info("Validation error: " + error.getDefaultMessage());
 			}
 		}
-		return URL_NUEVO;
-	}
+		return URL_REDIRECT;
+	}*/
 	
 }
