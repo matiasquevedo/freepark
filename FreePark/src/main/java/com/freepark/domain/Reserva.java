@@ -40,13 +40,13 @@ public class Reserva implements java.io.Serializable {
 	
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_ingreso")
 	private Date fechaIngreso;
 	
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_salida")
 	private Date fechaSalida;
 	

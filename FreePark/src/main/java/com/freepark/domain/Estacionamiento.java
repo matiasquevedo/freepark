@@ -11,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 @Entity
@@ -34,7 +33,7 @@ public class Estacionamiento {
 	@Column(name="techo")
 	private Boolean techo;
 
-	@NotNull
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinTable(
 			name="playas_estacionamientos", joinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}, 
@@ -62,7 +61,7 @@ public class Estacionamiento {
 		return playa;
 	}
 
-	public void setPlayas_id(Playa playa) {
+	public void setPlaya(Playa playa) {
 		this.playa = playa;
 	}
 

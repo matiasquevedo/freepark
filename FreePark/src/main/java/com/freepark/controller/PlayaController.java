@@ -1,8 +1,5 @@
 package com.freepark.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,29 +13,33 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.freepark.domain.Estacionamiento;
 import com.freepark.domain.Playa;
 import com.freepark.service.impl.EstacionamientoServiceImpl;
 import com.freepark.service.impl.PlayaServiceImpl;
 
+/**
+ * Handles requests for the application home page.
+ */
+
 @Controller
 @RequestMapping("/playas")
 public class PlayaController {
 
 	private static final String URL_INDEX = "playas/index";
-	private static final String URL_NUEVO = "playas/nuevo";
 	private static final String URL_EDITAR = "playas/editar";
+	private static final String URL_NUEVO = "playas/nuevo";
+	private static final String URL_ESTACIONAMIENTO = "playas/estacionamientos";
 	private static final String URL_REDIRECT = "redirect:/playas/";
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
 	@Autowired
-	private EstacionamientoServiceImpl servest;
-	
-	@Autowired
 	private PlayaServiceImpl service;
-	
+
+	@Autowired
+	private EstacionamientoServiceImpl serviceEst;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
@@ -46,22 +47,15 @@ public class PlayaController {
 		return URL_INDEX;
 	}
 	
-	@RequestMapping(value = "/list.json", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Playa> index2(Model model) {
-		return service.findAll();
-	}
-	
-	
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
-	public String nuevo(Model model) {
-		Playa playa = new Playa();
-		model.addAttribute("playa", playa);
+	public String nuevo(Model model){
+		model.addAttribute("playa", new Playa());
 		return URL_NUEVO;
 	}
 	
-	@RequestMapping(value = "/nuevo", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model) {
+	@RequestMapping(value="/nuevo", method= RequestMethod.POST)
+	public String form(@Valid Playa playa, BindingResult result,
+			Model model){
 		if (!result.hasErrors()) {
 			service.create(playa);
 			return URL_REDIRECT;
@@ -73,37 +67,64 @@ public class PlayaController {
 		return URL_NUEVO;
 	}
 	
-	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.GET)
-	public String editar(@Valid @PathVariable("id_playa") long id_playa, Model model){
-		Playa playa = service.findById(id_playa);
-		Estacionamiento estacionamiento = new Estacionamiento();
-		model.addAttribute("playa", playa);
-		model.addAttribute("estacionamiento", estacionamiento);
-		return URL_EDITAR;	
+	@RequestMapping(value = "/{id}/editar", method = RequestMethod.GET)
+	public String editar(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("playa", service.findById(id));
+		return URL_EDITAR;
+		}
+	
+	@RequestMapping(value = "/{id}/editar", method = RequestMethod.POST)
+	public String formEditar(@PathVariable("id") Long id,
+			@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model,
+			final RedirectAttributes redirectAttributes) {
+		
+		if (!result.hasErrors()) {
+			service.update(playa);
+			redirectAttributes.addFlashAttribute("message", "Playa actualizada.");
+			redirectAttributes.addFlashAttribute("cssmessage", "alert-success");
+			return URL_REDIRECT;
+		  } else {
+			for (ObjectError error : result.getAllErrors()) {
+				logger.info("Validation error: " + error.getDefaultMessage());
+			}
+		}
+		
+		return URL_EDITAR;
 	}
 	
-	@RequestMapping(value = "/editar/{id_playa}", method = RequestMethod.POST)
-	public String actualizar(@Valid @ModelAttribute("playa") Playa playa, BindingResult result, Model model) {
+	
+	@RequestMapping(value = "/{id}/borrar", method = RequestMethod.GET)
+	public String borrar(@PathVariable("id") Long id, Model model) {
+		service.removeById(id);
+		return URL_REDIRECT;
+	}
+	
+
+	@RequestMapping(value = "/{id}/estacionamientos", method = RequestMethod.GET)
+	public String estacionamiento(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("playa", service.findById(id));
+		model.addAttribute("estacionamiento", new Estacionamiento());
+		return URL_ESTACIONAMIENTO;
+		}
+	
+	@RequestMapping(value="/{id}/estacionamientos", method= RequestMethod.POST)
+	public String nuevoEstacionamiento(@PathVariable("id") Long id,
+			@Valid @ModelAttribute("estacionamiento") Estacionamiento estacionamiento, BindingResult result,
+			Model model){
+		
 		if (!result.hasErrors()) {
-			Estacionamiento e = new Estacionamiento();
-			e.setEstado(true);
-			e.setPlayas_id(playa);
-			e.setTecho(true);
-			e.setReferencia("14A");
-			List<Estacionamiento> ests = new ArrayList<Estacionamiento>();
-			ests.add(e);
-			playa.setEstacionamientos(ests);
-			
-			//Necesitamos crear primero el estacionamiento antes de relacionarlo
-			
-			service.update(playa);
-			return URL_REDIRECT;
+			estacionamiento.setPlaya(service.findById(id));
+			serviceEst.create(estacionamiento);
+			return "redirect:/playas/{id}/estacionamientos";
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
 				logger.info("Validation error: " + error.getDefaultMessage());
 			}
 		}
-		return URL_NUEVO;
+	
+		return "redirect:/playas/{id}/estacionamientos";
 	}
+	
+	
 	
 }

@@ -7,6 +7,7 @@
 		<!-- Style base -->
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/resources/css/bootstrap.min.css" />
+			<add-attribute value="/resources/css/sb-admin-2.css" />
 			<add-attribute value="/resources/css/font-awesome.min.css" />
 			<add-attribute value="/resources/css/jquery-ui.css" />
 			<add-attribute value="/resources/css/main.css" />
@@ -37,6 +38,19 @@
 	<!-- Formulario-->
 	<definition name="formulario" extends="defaultTemplate">
 		<put-attribute name="js_footer" value="validator.javascript" />
+	</definition>
+	
+	<definition name="gmaps.javascripts" extends="base.javascript">
+		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="/resources/js/validator.js" />
+			<add-attribute value="http://maps.google.com/maps/api/js?sensor=true" />
+			<add-attribute value="/resources/js/gmaps.js" />
+			<add-attribute value="/resources/js/mapa.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="formularioGMaps" extends="defaultTemplate">
+		<put-attribute name="js_footer" value="gmaps.javascripts"/>
 	</definition>
 	
 	<definition name="validator.javascript" extends="base.javascript">
