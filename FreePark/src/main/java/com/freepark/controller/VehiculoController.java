@@ -32,12 +32,11 @@ public class VehiculoController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("vehiculos", service.findAll());
-		model.addAttribute("vehiculo", new Vehiculo());
 		return URL_INDEX;
 	}
 	
-	@RequestMapping(value = "/{id_vehiculo}", method = RequestMethod.GET)
-	public String eliminar(@Valid @PathVariable("id_vehiculo") long id_vehiculo, Model model) {
+	@RequestMapping(value = "/eliminar/{id_vehiculo}", method = RequestMethod.GET)
+	public String eliminar(@Valid @PathVariable("id_vehiculo") long id_vehiculo) {
 		service.removeById(id_vehiculo);
 		return URL_REDIRECT;
 	}

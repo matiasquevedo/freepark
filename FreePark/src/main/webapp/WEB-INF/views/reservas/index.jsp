@@ -5,38 +5,38 @@
 		<tiles:putAttribute name="mensajes"
 			value="/WEB-INF/views/templates/page/mensajes.jsp" />
 		<tiles:putAttribute name="body">
-			<h1>Opciones de Administracion</h1>
-			<div class="row">
-				<div class="col-md-1">ID</div>
-				<div class="col-md-1">USUARIOS_ID</div>
-				<div class="col-md-1">VEHICULOS_ID</div>
-				<div class="col-md-4">FECHA_INGRESO</div>
-				<div class="col-md-4">FECHA_SALIDA</div>
-				<div class="col-md-1">ESTACIONAMIENTO_ID</div>
-			</div>
-			<c:forEach var="reserva" items="${reservas}" >
-				<div class="row">
-					<div class="col-md-1">
-						<c:out value="${reserva.id}" />
-					</div>
-					<div class="col-md-1">
-						<c:out value="${reserva.usuarios_id}" />
-					</div>
-					<div class="col-md-1">
-						<c:out value="${reserva.vehiculos_id}" />
-					</div>
-					<div class="col-md-4">
-						<c:out value="${reserva.fecha_ingreso}" />
-					</div>
-					<div class="col-md-4">
-						<c:out value="${reserva.fecha_salida}" />
-					</div>
-					<div class="col-md-1">
-						<c:out value="${reserva.estacionamiento_id}" />
-					</div>
-				</div>
-			</c:forEach>
-			<a href="<c:url value="/reservas/nuevo/" />" class="btn btn-primary">Nuevo</a>
+			<center>
+				<h1>Opciones de Administracion</h1>
+			</center>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>USUARIOS_ID</th>
+						<th>VEHICULOS_ID</th>
+						<th>FECHA_INGRESO</th>
+						<th>FECHA_SALIDA</th>
+						<th>ESTACIONAMIENTO_ID</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="reserva" items="${reservas}">
+						<tr>
+							<th><c:out value="${reserva.id}" /></th>
+							<td><c:out value="${reserva.usuario.username}" /></td>
+							<td><c:out value="${reserva.vehiculo.patente}" /></td>
+							<td><c:out value="${reserva.fechaIngreso}" /></td>
+							<td><c:out value="${reserva.fechaSalida}" /></td>
+							<td><c:out value="${reserva.estacionamiento.referencia}" /></td>
+							<td>
+								<a href="<c:url value="eliminar/${reserva.id}" />" class="glyphicon glyphicon-trash"></a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</tiles:putAttribute>
 	</tiles:insertDefinition>
 </div>

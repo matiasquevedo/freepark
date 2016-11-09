@@ -2,11 +2,11 @@
 <%@ include file="/WEB-INF/views/templates/layout/tags.jsp"%>
 <jsp:useBean id="now" class="java.util.Date" scope="page" />
 <footer>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
 				<p>
-					Pie de Pagina 
+					FreePark v0.0.9 
 				</p>
 			</div>
 			<div class="col-xs-12 col-md-6">

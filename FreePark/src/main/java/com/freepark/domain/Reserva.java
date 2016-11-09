@@ -39,14 +39,14 @@ public class Reserva implements java.io.Serializable {
 	private Vehiculo vehiculo;
 	
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_ingreso")
 	private Date fechaIngreso;
 	
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_salida")
 	private Date fechaSalida;
 	

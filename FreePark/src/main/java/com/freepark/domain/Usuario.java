@@ -50,11 +50,11 @@ public class Usuario implements UserDetails, java.io.Serializable {
 	private String confirmPassword;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="roles_id")
+	@JoinColumn(name = "roles_id")
 	private Rol roles;
 
 	@Column(name = "activado")
-	private Boolean enabled;
+	private Boolean enabled = false;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -104,6 +104,22 @@ public class Usuario implements UserDetails, java.io.Serializable {
 		this.roles = roles;
 	}
 
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public List<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
@@ -136,11 +152,6 @@ public class Usuario implements UserDetails, java.io.Serializable {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
 
 	@Override
 	public boolean isEnabled() {

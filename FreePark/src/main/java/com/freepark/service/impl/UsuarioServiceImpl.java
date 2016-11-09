@@ -1,7 +1,6 @@
 package com.freepark.service.impl;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class UsuarioServiceImpl extends ServiceImpl<Usuario, Long> implements Us
 	
 	@Override
 	public void update(Usuario entity) {
-		//TODO: Falta implementar
+		//Falta
 	}
 
 	@Override
@@ -54,4 +53,10 @@ public class UsuarioServiceImpl extends ServiceImpl<Usuario, Long> implements Us
 		}
 		
 	}
+
+	@Override
+	public void removeById(Long id) {
+		super.removeById(id);
+	}
+	
 }

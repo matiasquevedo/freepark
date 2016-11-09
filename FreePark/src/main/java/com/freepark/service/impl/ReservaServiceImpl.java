@@ -39,4 +39,9 @@ public class ReservaServiceImpl extends ServiceImpl<Reserva, Long> {
 		return super.findAll();
 	}
 	
+	@Override
+	public void removeById(Long id) {
+		super.removeById(id);
+	}
+	
 }
