@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/templates/layout/tags.jsp"%>
 <%@ page session="false"%>
+
 <tiles:insertDefinition name="formularioGMaps">
 	<tiles:putAttribute name="body">
 		<div class="container" style="margin-top: 60px;">
@@ -51,8 +52,15 @@
 										<span class="text-danger">${status.errorMessage}</span>
 									</c:if>
 								</div>
+
 							</div>
-						</spring:bind>
+							<div class="row"> <form:radiobutton path="estado"
+								value="0" />Reservado 
+					</div>
+					<c:if test="${status.error}">
+						<span class="text-danger">${status.errorMessage}</span>
+					</c:if>
+					</spring:bind>
 
 						
 						<div class="form-group">
@@ -64,6 +72,7 @@
 								<button type="submit" class="btn btn-success">Guardar</button>
 							</div>
 						</div>
+
 					</form:form>
 				</div>
 			</div>

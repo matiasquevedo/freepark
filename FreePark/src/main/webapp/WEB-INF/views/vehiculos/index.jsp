@@ -27,20 +27,7 @@
 							<td><c:out value="${vehiculo.marca}" /></td>
 							<td><c:out value="${vehiculo.modelo}" /></td>
 							<td>
-								<form:form method="POST" modelAttribute="vehiculo">
-									<spring:bind path="vehiculo">
-										<div
-											class="col-md-6 form-group ${status.error ? 'has-error' : '' }">
-											<form:hidden path="vehiculo" value="${vehiculo}" />
-
-											<c:if test="${status.error}">
-												<span class="text-danger">${status.errorMessage}</span>
-											</c:if>
-										</div>
-									</spring:bind>
-									
-									<button type="submit" class="btn glyphicon glyphicon-plus"></button>
-								</form:form>
+								<a href="<c:url value="${vehiculo.id}" />" class="glyphicon glyphicon-remove"></a>
 							</td>
 						</tr>
 					</c:forEach>

@@ -1,5 +1,7 @@
 package com.freepark.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -46,7 +48,7 @@ public class PlayaController {
 		model.addAttribute("playas", service.findAll());
 		return URL_INDEX;
 	}
-	
+
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
 	public String nuevo(Model model){
 		model.addAttribute("playa", new Playa());
@@ -124,7 +126,5 @@ public class PlayaController {
 	
 		return "redirect:/playas/{id}/estacionamientos";
 	}
-	
-	
-	
+
 }
