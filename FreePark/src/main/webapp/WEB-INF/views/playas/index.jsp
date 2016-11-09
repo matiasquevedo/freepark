@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/templates/layout/tags.jsp"%>
 <%@ page session="false"%>
+
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 		<div class="container" style="margin-top: 20px; padding-top: 20px;">

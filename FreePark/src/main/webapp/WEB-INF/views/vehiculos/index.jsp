@@ -27,7 +27,7 @@
 							<td><c:out value="${vehiculo.marca}" /></td>
 							<td><c:out value="${vehiculo.modelo}" /></td>
 							<td>
-								<a href="<c:url value="${vehiculo.id}" />" class="glyphicon glyphicon-remove"></a>
+								<a href="<c:url value="eliminar/${vehiculo.id}" />" class="glyphicon glyphicon-trash"></a>
 							</td>
 						</tr>
 					</c:forEach>
