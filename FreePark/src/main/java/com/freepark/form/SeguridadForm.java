@@ -17,11 +17,11 @@ public class SeguridadForm {
 	private Long id;
 
 	@NotNull
-	@Size(min = 5, max = 16)
+	@Size(min = 5)
 	private String password;
 
 	@NotNull(groups = SeguridadForm.class)
-	@Size(min = 5, max = 16)
+	@Size(min = 5)
 	private String confirmPassword;
 
 	@NotNull

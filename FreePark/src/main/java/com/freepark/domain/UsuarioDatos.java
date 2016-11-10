@@ -40,7 +40,6 @@ public class UsuarioDatos implements java.io.Serializable {
 	@Column(name = "email")
 	private String email;
 	
-	@NotNull
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="usuarios_id")
 	private Usuario usuario;

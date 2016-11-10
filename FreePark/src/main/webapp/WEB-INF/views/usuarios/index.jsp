@@ -43,7 +43,7 @@
 											href="<c:url value="/seguridad/${usuarioDato.usuario.id}/editar" />"><i
 												class="glyphicon glyphicon-user"></i> Seguridad</a></li>
 										<li><a
-											href="<c:url value="/usuarios/${usuarioDato.id}/borrar" />"><i
+											href="<c:url value="/usuarios/${usuarioDato.usuario.id}/borrar" />"><i
 												class="glyphicon glyphicon-remove"></i> Borrar</a></li>
 									</ul>
 								</div>

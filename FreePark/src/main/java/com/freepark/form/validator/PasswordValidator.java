@@ -11,6 +11,7 @@ import com.freepark.domain.Usuario;
 
 @Component
 public class PasswordValidator implements Validator {
+	private String atributo;
 	private static final Logger logger = LoggerFactory.getLogger(PasswordValidator.class);
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -21,8 +22,16 @@ public class PasswordValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		Usuario usuario= (Usuario) target;
 		if (!usuario.getPassword().equals(usuario.getConfirmPassword())) {
-				errors.rejectValue("usuario.password", "password.invalido");
+			errors.rejectValue(this.atributo, "password.invalido");
 		}
+	}
+
+	public String getAtributo() {
+		return atributo;
+	}
+
+	public void setAtributo(String atributo) {
+		this.atributo = atributo;
 	}
 
 }

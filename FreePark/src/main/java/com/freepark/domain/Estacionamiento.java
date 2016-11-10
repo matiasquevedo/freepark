@@ -33,12 +33,8 @@ public class Estacionamiento {
 	@Column(name="techo")
 	private Boolean techo;
 
-	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinTable(
-			name="playas_estacionamientos", joinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}, 
-			inverseJoinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}
-	)
+	@JoinColumn(name="playa_id")
 	private Playa playa;
 	
 	public Long getId() {

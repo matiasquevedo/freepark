@@ -26,11 +26,15 @@
 								items="${playa.estacionamientos}">
 								<tr>
 									<td><c:out value="${estacionamiento.referencia}"></c:out></td>
-									<td><c:out value="${estacionamiento.estado}"></c:out></td>
-									<td><c:out value="${estacionamiento.techo}"></c:out></td>
+									<td><c:if test="${estacionamiento.estado == true}">Disponible</c:if>
+										<c:if test="${estacionamiento.estado == false}">No Disponible</c:if>
+									</td>
+									<td><c:if test="${estacionamiento.techo == true}">Disponible</c:if>
+										<c:if test="${estacionamiento.techo == false}">No Disponible</c:if></td>
 									<td><a
-										href="<c:url value="/estacionamientos/${estacionamiento.id}/borrar" />"><i
-											class="glyphicon glyphicon-remove"></i> </a></td>
+										href="<c:url value="/estacionamientos/${estacionamiento.id}/borrar" />"
+										title="Eliminar"><i class="glyphicon glyphicon-trash"></i>
+									</a></td>
 								</tr>
 							</c:forEach>
 
@@ -53,8 +57,10 @@
 									<td><spring:bind path="estado">
 											<div class="form-group ${status.error ? 'has-error' : '' }">
 												<div>
-													<form:input placeholder="Estado" cssClass="form-control"
-														path="estado" />
+													<form:select path="estado" cssClass="form-control">
+														<form:option value="true">Disponible</form:option>
+														<form:option value="false">No Disponible</form:option>
+													</form:select>
 													<c:if test="${status.error}">
 														<span class="text-danger">${status.errorMessage}</span>
 													</c:if>
@@ -64,18 +70,20 @@
 									<td><spring:bind path="techo">
 											<div class="form-group ${status.error ? 'has-error' : '' }">
 												<div>
-													<form:input placeholder="Techo" cssClass="form-control"
-														path="techo" />
+													<form:select path="techo" cssClass="form-control">
+														<form:option value="false">No Disponible</form:option>
+														<form:option value="true">Disponible</form:option>
+													</form:select>
 													<c:if test="${status.error}">
 														<span class="text-danger">${status.errorMessage}</span>
 													</c:if>
 												</div>
 											</div>
 										</spring:bind></td>
+
 									<td><button type="submit" class="btn btn-success"
-											aria-label="Left Align">
-											<span class="glyphicon glyphicon-plus"
-												aria-hidden="true"></span>
+											aria-label="Left Align" title="Agregar">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 										</button></td>
 
 								</tr>

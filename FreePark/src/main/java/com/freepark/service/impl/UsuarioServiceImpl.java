@@ -40,7 +40,10 @@ public class UsuarioServiceImpl extends ServiceImpl<Usuario, Long> implements Us
 	
 	@Override
 	public void update(Usuario entity) {
-		//Falta
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(entity.getPassword());
+		entity.setPassword(hashedPassword);
+		super.update(entity);
 	}
 
 	@Override

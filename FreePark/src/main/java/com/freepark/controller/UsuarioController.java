@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.freepark.domain.Rol;
+import com.freepark.domain.Usuario;
 import com.freepark.domain.UsuarioDatos;
 import com.freepark.service.impl.UsuarioDatosServiceImpl;
 import com.freepark.form.RolEditor;
+import com.freepark.form.validator.PasswordValidator;
 import com.freepark.service.impl.RolServiceImpl;
 import com.freepark.service.impl.UsuarioServiceImpl;
 
@@ -45,7 +47,7 @@ public class UsuarioController {
 	private RolServiceImpl rolServiceImpl;
 	
 	@Autowired
-	private Validator passwordValidator;
+	private PasswordValidator passwordValidator;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
@@ -63,7 +65,9 @@ public class UsuarioController {
 	@RequestMapping(value="/nuevo", method= RequestMethod.POST)
 	public String form(@Valid UsuarioDatos usuarioDatos, BindingResult result,
 			Model model, final RedirectAttributes redirectAttributes){
-		passwordValidator.validate(usuarioDatos.getUsuario(), result);
+		Usuario user = usuarioDatos.getUsuario();
+		passwordValidator.setAtributo("usuario.password");
+		passwordValidator.validate(user, result);
 		if (!result.hasErrors()) {
 			usuarioServiceImpl.create(usuarioDatos.getUsuario());
 			serviceImpl.create(usuarioDatos);
@@ -107,12 +111,9 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "/{id}/borrar", method = RequestMethod.GET)
 	public String borrar(@PathVariable("id") Long id, Model model, final RedirectAttributes redirectAttributes) {
-		UsuarioDatos usuarioDatos = serviceImpl.findById(id);
-		if(usuarioDatos != null){
-			serviceImpl.remove(usuarioDatos);
+			usuarioServiceImpl.removeById(id);
 			redirectAttributes.addFlashAttribute("message", "Usuario borrado.");
 			redirectAttributes.addFlashAttribute("cssmessage", "alert-warning");
-		}
 		return URL_REDIRECT;
 	}
 	

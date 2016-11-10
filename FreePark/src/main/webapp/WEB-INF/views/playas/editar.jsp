@@ -41,6 +41,7 @@
 								</div>
 							</div>
 						</spring:bind>
+						
 						<spring:bind path="longitud">
 							<div class="form-group ${status.error ? 'has-error' : '' }">
 								<label class="control-label col-md-2" for="nombre">Longitud:</label>
@@ -54,14 +55,7 @@
 								</div>
 
 							</div>
-							<div class="row"> <form:radiobutton path="estado"
-								value="0" />Reservado 
-					</div>
-					<c:if test="${status.error}">
-						<span class="text-danger">${status.errorMessage}</span>
-					</c:if>
 					</spring:bind>
-
 						
 						<div class="form-group">
 							<div class="col-md-offset-2 col-md-5">

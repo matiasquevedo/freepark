@@ -38,13 +38,7 @@ public class Playa {
 	@Column(name = "longitud")
 	private String longitud;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name="playas_estacionamientos", joinColumns={@JoinColumn(name="playas_id", referencedColumnName="id")}, 
-			inverseJoinColumns={@JoinColumn(name="estacionamientos_id", referencedColumnName="id")}
-	)
-
-	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "playa")
 	private List<Estacionamiento> estacionamientos;
 
 	public List<Estacionamiento> getEstacionamientos() {
