@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.freepark.service.impl.EstacionamientoServiceImpl;
 
 @Controller
-@RequestMapping("/estacionamientos")
+@RequestMapping("backend/estacionamientos")
 public class EstacionamientoController {
 
 	private static final String URL_ESTACIONAMIENTO = "playas/estacionamientos";

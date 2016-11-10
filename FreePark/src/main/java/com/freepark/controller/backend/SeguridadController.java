@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import javax.validation.Valid;
 
@@ -27,11 +27,11 @@ import com.freepark.service.impl.RolServiceImpl;
 import com.freepark.service.impl.UsuarioServiceImpl;
 
 @Controller
-@RequestMapping("/seguridad")
+@RequestMapping("backend/seguridad")
 public class SeguridadController {
 
 	private static final String URL_EDITAR = "usuarios/seguridad";
-	private static final String URL_REDIRECT = "redirect:/usuarios/";
+	private static final String URL_REDIRECT = "redirect:/backend/usuarios/";
 
 	private static final Logger logger = LoggerFactory.getLogger(SeguridadController.class);
 

@@ -32,7 +32,7 @@
 									<td><c:if test="${estacionamiento.techo == true}">Disponible</c:if>
 										<c:if test="${estacionamiento.techo == false}">No Disponible</c:if></td>
 									<td><a
-										href="<c:url value="/estacionamientos/${estacionamiento.id}/borrar" />"
+										href="<c:url value="/backend/estacionamientos/${estacionamiento.id}/borrar" />"
 										title="Eliminar"><i class="glyphicon glyphicon-trash"></i>
 									</a></td>
 								</tr>

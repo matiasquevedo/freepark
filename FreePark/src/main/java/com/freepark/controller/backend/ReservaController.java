@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import javax.validation.Valid;
 
@@ -18,12 +18,12 @@ import com.freepark.domain.Reserva;
 import com.freepark.service.impl.ReservaServiceImpl;
 
 @Controller
-@RequestMapping("/reservas")
+@RequestMapping("backend/reservas")
 public class ReservaController {
 
 	private static final String URL_INDEX = "reservas/index";
 	private static final String URL_NUEVO = "reservas/nuevo";
-	private static final String URL_REDIRECT = "redirect:/admin/reservas/";
+	private static final String URL_REDIRECT = "redirect:/backend/reservas/";
 	private static final Logger logger = LoggerFactory.getLogger(ReservaController.class);
 	
 	@Autowired

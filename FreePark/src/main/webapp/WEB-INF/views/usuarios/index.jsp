@@ -37,13 +37,13 @@
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li><a
-											href="<c:url value="/usuarios/${usuarioDato.id}/editar" />"><i
+											href="<c:url value="/backend/usuarios/${usuarioDato.id}/editar" />"><i
 												class="glyphicon glyphicon-edit"></i> Editar</a></li>
 										<li><a
-											href="<c:url value="/seguridad/${usuarioDato.usuario.id}/editar" />"><i
+											href="<c:url value="/backend/seguridad/${usuarioDato.usuario.id}/editar" />"><i
 												class="glyphicon glyphicon-user"></i> Seguridad</a></li>
 										<li><a
-											href="<c:url value="/usuarios/${usuarioDato.usuario.id}/borrar" />"><i
+											href="<c:url value="/backend/usuarios/${usuarioDato.usuario.id}/borrar" />"><i
 												class="glyphicon glyphicon-remove"></i> Borrar</a></li>
 									</ul>
 								</div>
@@ -52,7 +52,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="<c:url value="/usuarios/nuevo" />" class="btn btn-primary" title="Nuevo Usuario">Nuevo</a>
+			<a href="<c:url value="/backend/usuarios/nuevo" />" class="btn btn-primary" title="Nuevo Usuario">Nuevo</a>
 		</tiles:putAttribute>
 	</tiles:insertDefinition>
 </div>

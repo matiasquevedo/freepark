@@ -24,7 +24,7 @@
 					<c:forEach items="${playas}" var="playa">
 						<tr>
 							<td class="col-md-4"><a
-								href="<c:url value="/playas/${playa.id}/editar" />"
+								href="<c:url value="/backend/playas/${playa.id}/editar" />"
 								title="editar"><c:out value="${playa.nombre}" /></a></td>
 							<td class="col-md-3"><c:out value="${playa.latitud}" /></td>
 							<td class="col-md-3"><c:out value="${playa.longitud}" /></td>
@@ -37,13 +37,13 @@
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li><a
-											href="<c:url value="/playas/${playa.id}/editar" />"><i
+											href="<c:url value="/backend/playas/${playa.id}/editar" />"><i
 												class="glyphicon glyphicon-edit"></i> Editar</a></li>
 										<li><a
-											href="<c:url value="/playas/${playa.id}/estacionamientos" />"><i
+											href="<c:url value="/backend/playas/${playa.id}/estacionamientos" />"><i
 												class="glyphicon glyphicon-th"></i> Estacionamientos</a></li>
 										<li><a
-											href="<c:url value="/playas/${playa.id}/borrar" />"><i
+											href="<c:url value="/backend/playas/${playa.id}/borrar" />"><i
 												class="glyphicon glyphicon-remove"></i> Borrar</a></li>
 									</ul>
 								</div>
@@ -54,7 +54,7 @@
 				</tbody>
 			</table>
 			<div class="col-md-12 text-right">
-				<a href="<c:url value="/playas/nuevo" />" class="btn btn-primary"
+				<a href="<c:url value="/backend/playas/nuevo" />" class="btn btn-primary"
 					title="Nueva Playa">Crear nueva</a>
 			</div>
 		</div>

@@ -61,7 +61,7 @@
 						<div class="form-group">
 							<div class="col-md-offset-2 col-md-5">
 								<a class="btn btn-primary" role="button"
-									href='<c:url value="/usuarios/" />' title="Volver">Volver</a>
+									href='<c:url value="/backend/usuarios/" />' title="Volver">Volver</a>
 							</div>
 							<div class="col-md-5">
 								<button type="submit" class="btn btn-success">Guardar</button>

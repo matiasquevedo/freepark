@@ -18,13 +18,13 @@
 						<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><a role="menuitem" href='<c:url value="/usuarios/" />'>Usuarios</a></li>
+						<li role="presentation"><a role="menuitem" href='<c:url value="/backend/usuarios/" />'>Usuarios</a></li>
 						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" href='<c:url value="/playas/" />'>Playas</a></li>
+						<li role="presentation"><a role="menuitem" href='<c:url value="/backend/playas/" />'>Playas</a></li>
 						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" href='<c:url value="/vehiculos/" />'>Veh&iacute;culos</a></li>
+						<li role="presentation"><a role="menuitem" href='<c:url value="/backend/vehiculos/" />'>Veh&iacute;culos</a></li>
 						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" href='<c:url value="/reservas/" />'>Reservas</a></li>
+						<li role="presentation"><a role="menuitem" href='<c:url value="/backend/reservas/" />'>Reservas</a></li>
 					</ul></li>
 			</ul>
 		</div>

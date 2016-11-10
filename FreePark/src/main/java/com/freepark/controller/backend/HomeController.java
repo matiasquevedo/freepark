@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import com.freepark.service.impl.PlayaServiceImpl;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("backend/")
 public class HomeController {
 
 	private static final String URL_INDEX = "default/index";

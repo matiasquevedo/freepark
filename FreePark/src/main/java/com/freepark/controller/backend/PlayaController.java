@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import java.util.List;
 
@@ -27,14 +27,14 @@ import com.freepark.service.impl.PlayaServiceImpl;
  */
 
 @Controller
-@RequestMapping("/playas")
+@RequestMapping("backend/playas")
 public class PlayaController {
 
 	private static final String URL_INDEX = "playas/index";
 	private static final String URL_EDITAR = "playas/editar";
 	private static final String URL_NUEVO = "playas/nuevo";
 	private static final String URL_ESTACIONAMIENTO = "playas/estacionamientos";
-	private static final String URL_REDIRECT = "redirect:/playas/";
+	private static final String URL_REDIRECT = "redirect:/backend/playas/";
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	
 	@Autowired
@@ -117,14 +117,14 @@ public class PlayaController {
 		if (!result.hasErrors()) {
 			estacionamiento.setPlaya(service.findById(id));
 			serviceEst.create(estacionamiento);
-			return "redirect:/playas/{id}/estacionamientos";
+			return "redirect:/backend/playas/{id}/estacionamientos";
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
 				logger.info("Validation error: " + error.getDefaultMessage());
 			}
 		}
 	
-		return "redirect:/playas/{id}/estacionamientos";
+		return "redirect:/backend/playas/{id}/estacionamientos";
 	}
 
 }

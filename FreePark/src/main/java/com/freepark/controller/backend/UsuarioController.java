@@ -1,4 +1,4 @@
-package com.freepark.controller;
+package com.freepark.controller.backend;
 
 import javax.validation.Valid;
 
@@ -28,12 +28,12 @@ import com.freepark.service.impl.RolServiceImpl;
 import com.freepark.service.impl.UsuarioServiceImpl;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("backend/usuarios")
 public class UsuarioController {
 
 	private static final String URL_INDEX = "usuarios/index";
 	private static final String URL_EDITAR = "usuarios/editar";
-	private static final String URL_REDIRECT = "redirect:/usuarios/";
+	private static final String URL_REDIRECT = "redirect:/backend/usuarios/";
 	
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 	
@@ -73,7 +73,7 @@ public class UsuarioController {
 			serviceImpl.create(usuarioDatos);
 			redirectAttributes.addFlashAttribute("message", "Usuario creado.");
 			redirectAttributes.addFlashAttribute("cssmessage", "alert-success");
-			return "redirect:/usuarios/";
+			return URL_REDIRECT;
 		} else {
 			for (ObjectError error : result.getAllErrors()) {
 				logger.info("Validation error: " + error.getDefaultMessage());
