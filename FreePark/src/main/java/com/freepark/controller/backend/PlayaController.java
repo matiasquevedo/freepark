@@ -27,13 +27,13 @@ import com.freepark.service.impl.PlayaServiceImpl;
  */
 
 @Controller
-@RequestMapping("backend/playas")
+@RequestMapping("backend/playas/")
 public class PlayaController {
 
-	private static final String URL_INDEX = "playas/index";
-	private static final String URL_EDITAR = "playas/editar";
-	private static final String URL_NUEVO = "playas/nuevo";
-	private static final String URL_ESTACIONAMIENTO = "playas/estacionamientos";
+	private static final String URL_INDEX = "backend/playas/index";
+	private static final String URL_EDITAR = "backend/playas/editar";
+	private static final String URL_NUEVO = "backend/playas/nuevo";
+	private static final String URL_ESTACIONAMIENTO = "backend/playas/estacionamientos";
 	private static final String URL_REDIRECT = "redirect:/backend/playas/";
 	private static final Logger logger = LoggerFactory.getLogger(PlayaController.class);
 	

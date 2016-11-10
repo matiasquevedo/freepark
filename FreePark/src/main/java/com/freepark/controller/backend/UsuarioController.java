@@ -28,11 +28,11 @@ import com.freepark.service.impl.RolServiceImpl;
 import com.freepark.service.impl.UsuarioServiceImpl;
 
 @Controller
-@RequestMapping("backend/usuarios")
+@RequestMapping("backend/usuarios/")
 public class UsuarioController {
 
-	private static final String URL_INDEX = "usuarios/index";
-	private static final String URL_EDITAR = "usuarios/editar";
+	private static final String URL_INDEX = "backend/usuarios/index";
+	private static final String URL_EDITAR = "backend/usuarios/editar";
 	private static final String URL_REDIRECT = "redirect:/backend/usuarios/";
 	
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);

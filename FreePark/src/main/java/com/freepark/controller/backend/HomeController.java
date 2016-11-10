@@ -18,7 +18,7 @@ import com.freepark.service.impl.PlayaServiceImpl;
 @RequestMapping("backend/")
 public class HomeController {
 
-	private static final String URL_INDEX = "default/index";
+	private static final String URL_INDEX = "backend/default/index";
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

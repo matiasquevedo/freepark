@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.freepark.service.impl.EstacionamientoServiceImpl;
 
 @Controller
-@RequestMapping("backend/estacionamientos")
+@RequestMapping("backend/estacionamientos/")
 public class EstacionamientoController {
 
-	private static final String URL_ESTACIONAMIENTO = "playas/estacionamientos";
+	private static final String URL_ESTACIONAMIENTO = "/backend/playas/estacionamientos";
 	private static final String URL_REDIRECT = "redirect:/playas/{id}/estacionamientos/";
 	private static final Logger logger = LoggerFactory.getLogger(EstacionamientoController.class);
 	

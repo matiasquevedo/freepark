@@ -18,11 +18,11 @@ import com.freepark.domain.Vehiculo;
 import com.freepark.service.impl.VehiculoServiceImpl;
 
 @Controller
-@RequestMapping("backend/vehiculos")
+@RequestMapping("backend/vehiculos/")
 public class VehiculoController {
 
-	private static final String URL_INDEX = "vehiculos/index";
-	private static final String URL_NUEVO = "vehiculos/nuevo";
+	private static final String URL_INDEX = "backend/vehiculos/index";
+	private static final String URL_NUEVO = "backend/vehiculos/nuevo";
 	private static final String URL_REDIRECT = "redirect:/backend/vehiculos/";
 	private static final Logger logger = LoggerFactory.getLogger(VehiculoController.class);
 	

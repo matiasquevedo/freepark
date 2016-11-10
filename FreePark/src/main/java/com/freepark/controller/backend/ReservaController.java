@@ -18,11 +18,11 @@ import com.freepark.domain.Reserva;
 import com.freepark.service.impl.ReservaServiceImpl;
 
 @Controller
-@RequestMapping("backend/reservas")
+@RequestMapping("backend/reservas/")
 public class ReservaController {
 
-	private static final String URL_INDEX = "reservas/index";
-	private static final String URL_NUEVO = "reservas/nuevo";
+	private static final String URL_INDEX = "backend/reservas/index";
+	private static final String URL_NUEVO = "backend/reservas/nuevo";
 	private static final String URL_REDIRECT = "redirect:/backend/reservas/";
 	private static final Logger logger = LoggerFactory.getLogger(ReservaController.class);
 	
